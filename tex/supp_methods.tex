@@ -19,6 +19,8 @@
 % amssymb package, useful for mathematical symbols
 \usepackage{amssymb}
 
+\usepackage[normalem]{ulem}
+
 % graphicx package, useful for including eps and pdf graphics
 % include graphics with the command \includegraphics
 \usepackage{graphicx}
@@ -26,6 +28,9 @@
 % cite package, to clean up citations in the main text. Do not remove.
 %% \usepackage{cite}
 \usepackage[authoryear]{natbib}
+
+% Use an edited PLoS provided bibtex style
+\bibliographystyle{myunsrt}
 
 
 \usepackage{color} 
@@ -49,9 +54,6 @@
 % Captions will be left justified
 \usepackage[labelfont=bf,labelsep=period,justification=raggedright]{caption}
 
-% Use an edited PLoS provided bibtex style
-
-\bibliographystyle{myunsrt}
 
 % Change bib name
 \renewcommand\refname{REFERENCES}
@@ -84,7 +86,7 @@
 
 \section*{SUPPLEMENTAL METHODS}
 
-\subsection*{Ethics Statement}
+\subsection*{Ethics statement}
 
 All human research was conducted in accordance with approved IRB protocols.
 Patient specimens were collected at MSKCC under IRB protocol \#00-144 A.
@@ -92,6 +94,11 @@ All patients provided written informed consent for use of their sample for gener
 Analysis of samples was conducted under NCI Protocol \#13CN024 without obtaining further consent, as patients had provided prior consent and the samples were analyzed anonymously.
 This study was performed in strict accordance with the recommendations in the Guide for the Care and Use of Laboratory Animals of the National Institutes of Health.
 The protocol was approved by the National Cancer Institute's Animal Care and Use Committee (Protocol DB-091).
+
+\subsection*{Tumor samples}
+Frozen sections of each tumor sample obtained from the Memorial Sloan Kettering Cancer Center (MSKCC) tumor bank were H\&E stained and reviewed under the microscope for presence of viable tumor.
+Diagnosis was confirmed by a board-certified dermatopathologist (K.B.) Only tumor samples with at least 80\% cell purity were used.
+All normal samples were also analyzed by H\&E stained sections from the frozen tissue and the absence of tumor was confirmed by microscopic examination by a pathologist (K.B.).
 
 \subsection*{MCV detection by real time quantitative PCR}
 Previously described primers were used to amplify a portion of the T antigen of the Merkel cell polyomavirus in all MCC tumor samples \cite[personal~communication]{Garneski2008Merkel}.
@@ -108,18 +115,19 @@ MCPyV (personal communication, ref. \citep{Garneski2008Merkel}): forward GCAAGCT
 MCV T antigen (this work): MCV444F forward TCCTTGGGAAGAATATGGAACT and MCV579R reverse GCGAGACAACTTACAGCTAA (expected product length 136bp).
 
 \subsection*{Cell lines}
-The Merkel cell carcinoma cell lines Mkl-1 \citep{Rosen1987Establishment}, WaGa \citep{Houben2010Merkel}, and UISO \citep{Ronan1993Merkel} have been described previously.
+The Merkel cell carcinoma cell lines Mkl-1 \citep{Rosen1987Establishment}, WaGa \citep{Houben2010Merkel}, \uline{MCC13, MCC26} \citep{Leonard1995Characterisation}, and UISO \citep{Ronan1993Merkel} have been described previously.
 SK-MC01 (MC01) was established from an 80 year old male patient with an 8.5 x 6.5 cm infiltrative MCC tumor on the left buttock.
 Tumor immunostaining for chromogranin and synaptophysin were positive.
 Staining for KRT20, CAM 5.2, and AE1/AE3 were positive with a paranuclear dot-like pattern.
 Another fragment of the patient’s tumor was flash frozen and analyzed as MCC tumor sample MT23.
 
-Mkl-1, WaGa, and UISO cells were grown and passaged in RPMI-1640 medium (Gibco by Life Technologies) supplemented with 10\% FBS (Hyclone – Thermo Fisher), 100 U/mL penicillin, 0.1 mg/mL streptomycin, and 0.1 mg/ml Normocin (InvivoGen).
+Mkl-1, WaGa, \uline{MCC13, MCC26} and UISO cells were grown and passaged in RPMI-1640 medium (Gibco by Life Technologies) supplemented with 10\% FBS (Hyclone – Thermo Fisher), 100 U/mL penicillin, 0.1 mg/mL streptomycin, and 0.1 mg/ml Normocin (InvivoGen).
 MC01 cells were grown and passaged in RPMI-1640 medium (Gibco by Life Technologies) supplemented with 10\% FBS (Hyclone – Thermo Fisher), 100 U/mL penicillin, 0.1 mg/mL streptomycin, and 1xNEAA.
 
 Mkl-1, WaGa, and UISO late passage cells were obtained from Dr. J\"{u}rgen Becker.
 UISO early passage cells were obtained from Dr. Das Gupta.
 MC01 cells were generated at the Memorial Sloan Kettering Cancer Center (MSKCC).
+\uline{MCC13 and MCC26 were obtained from Dr. Patrick Moore.}
 
 \subsection*{cDNA array hybridization of tumor samples}
 Tumor specimens were supplied by the Memorial Sloan Kettering Cancer Center (MSKCC) tumor bank, Department of Pathology, tissue procurement service.
@@ -140,7 +148,7 @@ All samples were treated with RNase-free DNase (Qiagen Cat. No. 79254).
 RNA quality was analyzed with the Agilent Bioanalyzer 2100 using the RNA 6000 Nano Kit (Agilent Technologies).
 
 RNA (100 ng) was reverse-transcribed and labeled with biotin using the Affymetrix $3^{\prime}$ IVT Express Kit following manufacturer's protocol.
-Six replicates of each cell line were prepared, labeled, and hybridized to the Human Genome U133A 2.0 Array (Affymetrix) at the NCI Center for Cancer Research microarray core facility.
+Six replicates of each cell line \uline{(except for MCC13 and MCC26)} were prepared, labeled, and hybridized to the Human Genome U133A 2.0 Array (Affymetrix) at the NCI Center for Cancer Research microarray core facility.
 Three replicates of each cell line were also hybridized to the GeneChip Human Genome U133 Plus 2.0 Array (Affymetrix).
 The chips were scanned on Affymetrix GeneChip Scanner 3000G.
 Data were collected using Affymetrix GeneChip Command Console (AGCC) Software.
@@ -149,7 +157,7 @@ Data were collected using Affymetrix GeneChip Command Console (AGCC) Software.
 \subsection*{Microarray analysis of MCC tumors, SCLC tumors, and MCC cell lines (HG-U133A 2.0 Array data)}
 
 All microarray expression analysis was performed using R, a free software environment for statistical computing and graphics.
-The R package ``affy'' \citep{Gautier2004Affyanalysis} was used to read in probe intensity data from CEL-formatted files..
+The R package ``affy'' \citep{Gautier2004Affyanalysis} was used to read in probe intensity data from CEL-formatted files.
 The Robust Multi-Array Average (RMA) procedure was used for background correction, quantile normalization and probe set summarization \citep{Irizarry2003Exploration}.
 No batch correction was performed, as no batch effects were detected.
 
@@ -166,7 +174,7 @@ The partitioning around mediods (PAM) clustering method from the ``cluster'' pac
 
 \subsection*{Differential gene expression analysis}
 
-The package ``limma'' was used for differential expression analysis to compare MCC cell lines to MCC tumor samples as well as other MCC cell lines \citep{Smyth2004Linear,Smyth2005Limma}.
+\uline{The package ``limma'' was used for differential expression analysis to compare MCC cell lines to MCC tumor samples, other MCC cell lines, and between MCC tumor samples grouped by clinical features}  \citep{Smyth2004Linear,Smyth2005Limma}.
 All $p$-values were FDR corrected for multiple hypothesis testing ($q$-values \citep{Benjamini1995Controlling}).
 We call probe sets to be differentially expressed if the absolute fold change is greater than 2 and the $q$-value is less than 0.05.
 
@@ -181,7 +189,7 @@ The classifier was then applied to the MCC cell lines, and the average class pre
 
 \subsection*{Microarray analysis of MCC and CCLE cell lines (HG-U133 Plus 2.0 Array data)}
 
-The R package ``affy'' \citep{Gautier2004Affyanalysis} was used to read in probe intensity data from CEL-formatted files obtained from the microarray core facility for the MCC cell lines and the raw CEL files for CCLE data were downloaded directly from GEO (accession GSE36133).
+The R package ``affy'' \citep{Gautier2004Affyanalysis} was used to read in probe intensity data from CEL-formatted files obtained from the NCI Center for Cancer Research microarray core facility for the MCC cell lines and the raw CEL files for CCLE data were downloaded directly from GEO (accession GSE36133).
 The frozen Robust Multi-Array Average (fRMA) package was applied to all samples for background correction, quantile normalization and probe set summarization \citep{McCall2010Frozen}.
 Batch effects between the MCC cell lines and the CCLE cell lines were observed by examining the results from the ``arrayQualityMetrics'' package, PCA plots, and using the surrogate variable analysis package ``sva.''
 Thus, the expression data was subsequently processed using the ``ComBat'' algorithm, a non-parametric empirical Bayes adjustment model \citep{Johnson2007Adjusting} to reduce the impact of ``expression heterogeneity'' from unknown factors.
@@ -190,18 +198,19 @@ The bottom 40\% of probe sets sorted by variance of expression over all samples 
 
 \subsection*{Classification of MCC cell lines with CCLE cell lines}
 
-A random forest classifier was trained using the batch-corrected microarray probe set expression data for the WaGa, Mkl-1, and UISO cell line samples along with cell line samples from the CCLE dataset using the ``randomForest'' package.
+\uline{A random forest classifier was trained using the batch-corrected microarray probe set expression data for the WaGa and Mkl-1 cell line samples along with cell line samples from the CCLE dataset using the ``randomForest'' package.}
 Probe Sets were variance-filtered as previously described.
 A forest of 1000 trees was used each with $\sqrt{32768}=181$ randomly selected features.
 Samples were drawn with replacement, and class sizes were balanced by using the minimum size of all classes (5).
-One random forest was trained without the UISO samples, and subesquently applied to those samples.
-A second random forest was trained with the UISO samples as a separate class, and the WaGa and Mkl-1 samples labeled as MCC.
-See the Supplementary Materials for the analysis code.
+\uline{The random forest was subsequently applied to the variant (MCC13, MCC26, and UISO) samples.}
+%% A second random forest was trained with the UISO samples as a separate class, and the WaGa and Mkl-1 samples labeled as MCC.
+%% See the Supplementary Materials for the analysis code.
 
 \subsection*{STR Profiling}
 
 Genomic DNA was isolated from cell lines using the Puregene Core kit A (Qiagen) and sent to the Johns Hopkins Fragment Analysis Facility for STR profiling.
-The DNA was profiled using the AmpF$\ell$STR Identifiler PCR Amplification Kit (Applied Biosystems), which profiles 16 STR markers.
+\uline{All cell lines besides MCC13 and MCC26 were profiled using the AmpF$\ell$STR Identifiler PCR Amplification Kit (Applied Biosystems), which profiles 16 STR markers.
+MCC13 and MCC26 were profiled using the Promega PowerPlex 18D Kit, which profiles the same 16 markers plus two others (Table S6).}
 The profiles were also compared against profile databases of known cell line references including ATCC, DSMZ, and JCRB.
 
 \subsection*{Mouse xenografts of UISO and WaGa cell lines}
@@ -213,7 +222,7 @@ Tumor tissue was collected after tumors were clinically detectable and were fixe
 \subsection*{Immunohistochemistry of UISO and WaGa mouse xenograft tumors}
 
 Paraffin-embedded tissue sections (5 $\mu\mathrm{m}$) of fixed xenograft tumors on glass slides were stained on an automated immunostainer (Ventana Medical System, Tucson, AZ, USA), according to the manufacturer's instructions.
-The primary antibodies and antigen retrieval methods used are indicated in Table S5.
+The primary antibodies and antigen retrieval methods used are indicated in Table S7.
 
 \subsection*{Spectral karyotyping of the UISO cell line}
 
@@ -233,7 +242,7 @@ We report SKY results by using the International System for Human Cytogenetic No
 
 \subsection*{Data availability}
 The tumor sample and cell line microarray data discussed in this publication has been deposited in NCBI's Gene Expression Omnibus \citep{Edgar2002Gene} and is accessible through GEO Series accession number GSE50451.
-All analysis code, including generation of all figures and supplementary tables and figures, is available at \url{https://github.com/kdaily/UISO\_code/}.
+All analysis code, including generation of all figures and supplementary tables and figures, \uline{is available in reference} \cite{DailyUISOReproducible2014}. %% \url{https://github.com/kdaily/UISO\_code/}.
 
 %% \end{spacing}
 

@@ -26,8 +26,9 @@
 
 % Use doublespacing - comment out for single spacing
 \usepackage{setspace} 
-\doublespacing
+%% \doublespacing
 
+\usepackage[normalem]{ulem}
 
 % Text layout
 \topmargin 0.0cm
@@ -135,7 +136,7 @@ In contrast, immunostaining for cytokeratin 20 (KRT20) is more specific for MCC,
 A growing number of MCC tumor cell lines are available \citep{Krasagakis2001Growth,Leonard1993Characterization,Rosen1987Establishment,Leonard1995Characterisation,Moll1994Establishment,Ronan1993Merkel}.
 Most MCC cell lines grow in suspension, express MCC immunomarkers, and demonstrate dense core granules on ultrastructural analysis.
 MCC cell lines with these typical features, such as WaGa and Mkl-1, are termed ``classic'' \citep{Ronan1993Merkel,Leonard1993Characterization,VanGele2004Geneexpression}.
-In contrast, "variant" MCC cell lines like UISO-MCC-1 (henceforth referred to as UISO) \citep{Ronan1993Merkel} grow adherently in culture, lack typical markers on immunostaining, and have reduced numbers of neurosecretory granules. 
+In contrast, "variant" MCC cell lines like UISO-MCC-1 (henceforth referred to as UISO) \citep{Ronan1993Merkel} grow adherently in culture, lack typical markers on immunostaining, and have reduced numbers of neurosecretory granules.
 Little has been done to assess the representativness of either classic or variant MCC cell lines. 
 
 Here we apply computational and experimental methods to compare MCC cell line transcriptomes to each other, to fresh tumor tissue, and to other cancer cells in order to examine their representativeness.
@@ -165,9 +166,9 @@ UISO cells were less so (median correlation $=0.66$).
 
 \subsection*{Virus status of MCC tumors does not influence gene expression comparisons}
 Despite having varied clinical features, the MCC tumor samples analyzed in this study were remarkably homogeneous at the RNA expression level.
-We observed no significantly differentially expressed probe sets when comparing samples based on clinically relevant phenotypes such as tumor site, primary vs. metastasis, or tumor stage (data not shown).
+\uline{We observed no significantly differentially expressed probe sets when comparing samples based on clinically relevant phenotypes such as tumor site (primary skin vs. metastasis), if the patient ultimately had a recurrence, or tumor stage (stage 1-2 vs. Stage 3, coded as early vs. late; Table S1).}
 Moreover, we found no significantly differentially expressed probe sets between MCV positive and negative tumors.
-Consistent with this, there was little difference in the correlation values for each cell line when compared independently to MCV positive or MCV negative tumors (Table S1).
+Consistent with this, there was little difference in the correlation values for each cell line when compared independently to MCV positive or MCV negative tumors (Table S2).
 These observations suggest that clinical differences and MCV status are not driving the divergent expression profile observed in the MCV-negative \citep{Houben2010Merkel} UISO cell line.
 
 \subsection*{Predicted functional differences between the UISO cell line and MCC tumor samples}
@@ -175,7 +176,7 @@ Having identified significant differences between the UISO cell line and the tum
 To identify pathways that are significantly differentially expressed between MCC cell lines and tumor samples, we applied Gene Set Enrichment Analysis (GSEA) \citep{Subramanian2005Gene} using the differential expression data and pathway gene sets taken from the Kyoto Encyclopedia of Genes and Genomes (KEGG) database \citep{Kanehisa2000KEGG}.
 We performed three comparisons: UISO cells versus tumor samples, classic cell lines (WaGa and Mkl-1) versus tumor samples, and the UISO cells versus the classic cell lines.
 
-Many pathways identified as differentially expressed between UISO cells and the classic cell lines were the same as those identified as differentially expressed between the UISO cell line and the tumor samples (Table S2), consistent with the classic cell lines' similarity to MCC tumors.
+Many pathways identified as differentially expressed between UISO cells and the classic cell lines were the same as those identified as differentially expressed between the UISO cell line and the tumor samples (Table S3), consistent with the classic cell lines' similarity to MCC tumors.
 In contrast, we observed that classic cell lines had distinct functional differences from the tumors.
 
 Although enrichment of any given pathway requires experimental validation, GSEA analysis often accurately reveals biological schemes.
@@ -191,12 +192,16 @@ The trained model strongly classified all cell lines except for UISO as MCC (ove
 \subsection*{Classification of MCC cell lines using the Cancer Cell Line Encyclopedia}
 Since the gene expression of UISO cells did not resemble MCC tumors or more typical MCC cell lines, we assessed their distinctness using data from the Cancer Cell Line Encyclopedia (CCLE)\citep{Barretina2012Cancer} to compare MCC cell line expression data to a broad set of cancer cell lines.
 We selected a set of eight cancer types from the CCLE that were common malignancies or shared some feature with MCC (from the skin, neuroendocrine, or neuroectodermal) to analyze with UISO, WaGa, and Mkl-1 cell lines.
+\uline{We also analyzed two additional variant cell lines, MCC13 and MCC26} \citep{Leonard1995Characterisation} \uline{to assess their level of similarity to UISO cells versus the classic MCC cell lines.}
 
-A random forest classifier was constructed using the selected CCLE lines and the Mkl-1 and WaGa cell lines (grouped as an MCC class) to classify the UISO cells (see Supplementary Methods).
-The resulting random forest did not classify the UISO samples as MCC (1\% probability), but as melanoma (20\% probability; Table S3).
-Held out WaGa or Mkl-1 samples were strongly classified as MCC (70\% probability, Table S4).
+A random forest classifier was constructed using the selected CCLE lines and the Mkl-1 and WaGa cell lines (grouped as an MCC class) to classify the \uline{variant cell lines} (see Supplementary Methods).
+The resulting random forest did not classify the UISO samples as MCC (1\% probability).
+They were classified with nearly equal probability for a number of tumor types, including melanoma, hepatocellular, breast, and lung carcinomas (Table S4).
+\uline{The variant samples MCC13 and MCC26 were classified more strongly as MCC (up to 18\% probability), but were similarly classified to other cancer types as UISO.}
+Held out WaGa or Mkl-1 samples were strongly classified as MCC (70\% probability, Table S5).
 Using PCA visualization, we observed that WaGa and Mkl-1 samples clustered near neuroendocrine (SCLC) and neuroectodermal (Ewing’s sarcoma) samples. 
-As expected, UISO samples clustered away from the neuroendocrine tumors and closer to melanoma samples (Figure \ref{fig:pcaccle}).
+\uline{As expected, UISO samples clustered away from the neuroendocrine tumors, while the MCC13 and MCC26 samples cluster in between the UISO and classic samples (Figure \ref{fig:pcaccle}).
+These findings reinforce that UISO do not resemble typical MCC cell lines and are even more distinct than other variant MCC cell lines.}
 
 \subsection*{Immunohistochemical analysis of MCC xenograft tumors}
 To confirm that the distinct expression profile observed in cultured UISO cells correlates with an atypical tumor phenotype \emph{in vivo}, we grew xenograft tumors with UISO, WaGa, and Mkl-1 cells in immunocompromised mice.
@@ -230,10 +235,11 @@ Moreover, the UISO cell line was not similar to any cell line available in the m
 \section*{Discussion}
 
 Characterization of tumor cell lines is important in developing appropriate and representative \emph{in vitro} models for the study of cancer.
-Here we found that the MCC cell line UISO was not representative of MCC tumors based on multiple comparative analyses of global gene expression and predicted gene set function.
-Furthermore, machine learning approaches failed to classify UISO cells as MCC. 
+Here we found that the variant MCC cell line UISO was not representative of MCC tumors based on multiple comparative analyses of global gene expression and predicted gene set function.
+\uline{Furthermore, machine learning approaches failed to classify UISO cells as MCC, whereas other variant cell lines were more similar to classic lines, but were not strongly classified as MCC.}
 UISO also had an atypical histopathologic phenotype when grown as xenograft tumors in mice.
 At the same time, we found that the WaGa and Mkl-1 cell lines more closely resembled MCC tumors in gene expression and \emph{in vivo} growth.
+
 
 In light of these findings, we speculate that an atypical MCC tumor gave rise to the UISO cell line.
 UISO cells were derived from a tumor arising on the thigh of a patient much younger than the mean age for MCC presentation (46 versus 72 years) \citep{Ronan1993Merkel}.
@@ -256,15 +262,24 @@ In contrast to UISO, WaGa and Mkl-1 cells were more representative of MCC tumors
 Expression differences relative to tumor tissue did exist with WaGa and Mkl-1 cells, which are expected due to the lack of stroma, vasculature, and hematopoietic cells in cultured cancer cells.
 As a model system to study the biology of MCC and predict the behavior of native tumors, it appears that WaGa and Mkl-1 are preferable to UISO.
 
+\uline{Curiously, a previous study comparing MCC cell lines using expression microarrays with only 1083 genes found that UISO cells clustered with classic MCC lines, such as Mkl-1} \citep{VanGele2004Geneexpression}.
+\uline{The limited scope of the genes analyzed and the lack of MCC tumor samples likely contributed to this misleading finding.
+In contrast, using a comprehensive set of more than 40,000 human transcripts, we have demonstrated through multiple analyses that UISO samples cluster separately from both classic cell lines as well as MCC tumor samples.}
+
 It is interesting to note that on a transcriptome level, the set of MCC tumor samples analyzed in this study are quite homogeneous.
 Clustering of the expression data failed to identify subclasses of MCC with strongly distinct gene expression signatures.
-The absence of significant differences in gene expression between subgroups of MCC tumors included a comparison of MCV positive and negative tumor samples.
+\uline{The absence of significant differences in gene expression between subgroups of MCC tumors included a comparison of MCV positive and negative tumor samples (Table S1).}
 This contrasts with a recent publication comparing virus-positive and virus-negative MCC tumors in which significant differences were found \citep{Harms2013Distinct}.
 The reason for these differing results is unknown.
 However, in their study, only 46\% of the tumors analyzed were found to be virus positive, whereas most reports indicate 70-80\% of MCC tumors are virus positive \citep{Pulitzer2009Merkel,Feng2008Clonal}.
 This is consistent with the 70\% virus positive tumors we observed here.
 It is not clear if this reflects a difference in virus detection methods, or a true difference in the patient populations.
 Regardless, there was no concordance between the virus status of the tumors and their dissimilarity to the UISO cell line or their similarity to WaGa and Mkl-1, indicating that the differences observed in UISO cells are not driven by viral status.
+
+\uline{The independence of tumor viral status on cell line similarity is an important observation, as variant MCC cell lines are predominantly MCV-negative, and classic lines tend to be MCV-positive. 
+All three variant cell lines used in this study are MCV-negative, whereas the classic lines are MCV-positive.
+By definition variant lines lack expression of certain differentiation markers, and our data suggest that variant cell lines may be divergent from MCC tumors on a more general level. 
+However, the fact that MCV-negative native tumors are not similarly distinct from MCV-positive tumors and classic MCC cell lines suggests that MCV status alone is not the driver of atypical gene expression in the variant cell lines.}
 
 We have demonstrated that the question of cell line representativeness can be answered (in part) by the use of gene expression microarray data.
 Straightforward computational methods and publicly available data can be applied to compare cell lines with native tumor tissue and other cell lines to assess cancer type concordance.
@@ -279,20 +294,19 @@ Primers were also designed to amplify an independent region of the MCV T antigen
 Primers for thyroid peroxidase (\emph{TPO}), a gene on chromosome 2, were used as a control on all MCC tumor samples as in \citep{Paulson2008ArrayCGH}.
 
 \subsection*{Cell lines}
-The MCC cell lines Mkl-1 \citep{Rosen1987Establishment}, WaGa \citep{Houben2010Merkel}, and UISO \citep{Ronan1993Merkel} have been described previously.
-
+The MCC cell lines Mkl-1 \citep{Rosen1987Establishment}, WaGa \citep{Houben2010Merkel}, and UISO \citep{Ronan1993Merkel}, \uline{and MCC13 and MCC26} \citep{Leonard1995Characterisation} have been described previously.
 SK-MC01 cells were generated at the Memorial Sloan Kettering Cancer Center (MSKCC).
 
 \subsection*{cDNA array hybridization of tumor samples and cell lines}
 Fresh frozen tumor specimens were supplied by the MSKCC tumor bank.
 Total RNA was extracted from tumor specimens and hybridized to Human Genome U133A 2.0 Array (Affymetrix) GeneChips.
 
-Total RNA was extracted from six replicates of each cell line (single replicate of MC01) and hybridized to the Human Genome U133A 2.0 Array (Affymetrix).
-Three replicates of each cell line (excluding MC01) were also hybridized to the GeneChip Human Genome U133 Plus 2.0 Array (Affymetrix).
+Total RNA was extracted from six replicates of each cell line \uline{except for MCC13 and MCC26} (single replicate of MC01) and hybridized to the Human Genome U133A 2.0 Array (Affymetrix).
+Three replicates of all cell lines (excluding MC01) were also hybridized to the GeneChip Human Genome U133 Plus 2.0 Array (Affymetrix).
 
 \subsection*{Microarray analysis}
 For MCC tumors, SCLC tumors, and MCC cell lines on the Affymetrix U133A 2.0 platform, normalization, filtering, and analysis of microarray expression data were performed using R (details in Supplemental Methods).
-Raw CEL files for CCLE data were downloaded directly from GEO (accession GSE36133) and were normalized as above with MCC cell line Affymetrix U133A 2.0 array data.
+Raw CEL files for CCLE data were downloaded directly from GEO (accession GSE36133) and were normalized as above with MCC cell line \uline{Affymetrix U133 Plus 2.0} array data.
 We call probe sets to be differentially expressed at a fold change $> 2$ and $q < 0.05$.
 
 \subsection*{Classification of MCC cell lines with MCC and SCLC tumors}
@@ -301,10 +315,10 @@ The classifier was then applied to the MCC cell lines, and the average class pre
 
 \subsection*{Classification of MCC cell lines with CCLE cell lines}
 A random forest classifier was trained using the  microarray expression data for MCC cell lines (except for UISO) along with samples from the CCLE dataset.
-The classifier was then applied to the UISO samples.
+\uline{The classifier was then applied to the variant (UISO, MCC13, and MCC26) samples.}
 
 \subsection*{STR Profiling}
-Genomic DNA was isolated from all cell lines and sent to the Johns Hopkins Fragment Analysis Facility for STR profiling using the AmpF$\ell$STR Identifiler PCR Amplification Kit (Applied Biosystems), which profiles 16 STR markers (Table S6).
+\uline{Genomic DNA was isolated from all cell lines and sent to the Johns Hopkins Fragment Analysis Facility for STR profiling on all cell lines except MCC13 and MCC26 using the AmpF$\ell$STR Identifiler PCR Amplification Kit (Applied Biosystems), which profiles 16 STR markers (Table S6). MCC13 and MCC26 were profiled using the Promega PowerPlex 18D Kit, which profiles the same 16 markers plus two others.}
 
 \subsection*{Mouse xenografts}
 Five to eight-week-old female NOD/scid mice were obtained from the NCI Animal Production Program and housed under specific pathogen-free conditions.
@@ -313,7 +327,7 @@ Tumor tissue was collected and fixed in neutral buffered formalin after tumors w
 
 \subsection*{Immunohistochemistry of mouse xenograft tumors}
 Paraffin-embedded tissue sections (5 $\mu\mathrm{m}$) of fixed xenograft tumors on glass slides were stained on an automated immunostainer (Ventana Medical System), according to the manufacturer's instructions.
-The primary antibodies and antigen retrieval methods used are indicated in Table S5.
+The primary antibodies and antigen retrieval methods used are indicated in Table S7.
 
 \subsection*{Spectral karyotyping of the UISO cell line}
 UISO cells were harvested after Colcemid (Life Technologies) treatment ($0.025 \mu\textrm{g/mL}$: 1–2 hours) and processed by standard cytogenetic methods.
@@ -322,8 +336,7 @@ We report SKY results by using the International System for Human Cytogenetic No
 
 \subsection*{Data access}
 All tumor sample and cell line microarray data have been deposited in NCBI's Gene Expression Omnibus \citep{Edgar2002Gene} and is accessible through GEO Series accession number GSE50451.
-All analysis code, including generation of all figures, tables, and supplementary tables and figures, are available at https://github.com/kdaily/UISO\_code/.
-
+All analysis code, including generation of all figures, tables, and supplementary tables and figures, \uline{are available in reference} \cite{DailyUISOReproducible2014} \uline{(DOI 10.6084/m9.figshare.1030618).}
 See the Supplementary Methods for details.
 
 \section*{Conflicts of Interest}
@@ -335,6 +348,7 @@ Its contents are solely the responsibility of the authors and do not necessarily
 We thank the NCI CCR Informatics Core for assistance.
 We thank Dr. Tapas K. Das Gupta for providing early passage UISO cells.
 We thank Dr. Patrick Moore and Dr. J\"{u}rgen Becker for providing WaGa, Mkl-1, and late-passage UISO cells.
+\uline{We thank Dr. Patrick Moore for providing MCC13 and MCC26 cells.}
 We thank Dr. Jedd Wolchock for assistance in generating SK-MC01 cells.
 We thank Dr. Mark Raffeld and Cindy Harris for immunohistochemical assays.
 We thank Dr. Anna Roschke and Kenneth Nakahara for the SKY analysis.
@@ -390,9 +404,9 @@ This study utilized the high-performance computational capabilities of the Biowu
   \end{center}
 
   \caption{
-    {\bf Among multiple cancer cell lines, UISO cells are distinct from classic MCC cell lines as well as other neuroendocrine lines.}
+    {\bf Among multiple cancer cell lines, \uline{variant cell lines are distinct from classic MCC cell lines} as well as other neuroendocrine lines.}
     Principal components analysis of microarray expression data from MCC cell lines and cell lines from the Cancer Cell Line Encyclopedia was computed from variance-filtered probe set expression values for each sample.
-    The variance in the expression data accounted for by components one and two are 9\% and 5\%, respectively.}
+    The variance in the expression data accounted for by components one and two are 8\% and 5\%, respectively.}
 
   \label{fig:pcaccle}
 \end{figure}
@@ -487,4 +501,3 @@ This study utilized the high-performance computational capabilities of the Biowu
 
 
 \end{document}
-
